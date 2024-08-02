@@ -1,14 +1,12 @@
 #!/usr/bin/python3
-''' Write a script markdown2html.py that takes arguments of 2 strings:
-    First argument is the name of the Markdown file
-    Second argument is the output file name
-'''
 
+"""
+Markdown script using python.
+"""
 import sys
 import os.path
-import hashlib
 import re
-
+import hashlib
 
 if __name__ == '__main__':
     if len(sys.argv) < 3:
@@ -23,14 +21,14 @@ if __name__ == '__main__':
     with open(sys.argv[1]) as read:
         with open(sys.argv[2], 'w') as html:
             unordered_start, ordered_start, paragraph = False, False, False
-            # create a bold syntax
+            # bold syntax
             for line in read:
                 line = line.replace('**', '<b>', 1)
                 line = line.replace('**', '</b>', 1)
                 line = line.replace('__', '<em>', 1)
                 line = line.replace('__', '</em>', 1)
 
-                # md5 hash
+                # md5
                 md5 = re.findall(r'\[\[.+?\]\]', line)
                 md5_inside = re.findall(r'\[\[(.+?)\]\]', line)
                 if md5:
@@ -95,4 +93,4 @@ if __name__ == '__main__':
                 html.write('</ol>\n')
             if paragraph:
                 html.write('</p>\n')
-    exit (0)
+    exit(0)
