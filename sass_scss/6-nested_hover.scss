@@ -1,7 +1,9 @@
-/* change button color on hover*/
+// This file assigns text color #FF0000 to button tags and changes the text
+
 button {
     color: #FF0000;
     &:hover {
       color: #00FF00;
     }
-  }    
+  }
+  
